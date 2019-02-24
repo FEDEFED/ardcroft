@@ -1,0 +1,133 @@
+import speech_recognition
+import sys, urllib, urllib2
+import xml.dom.minidom as xdm
+from poster.encode import multipart_encode
+from poster.streaminghttp import register_openers
+from xml.dom.minidom import parseString
+
+
+while True:
+    micro = sr.AudioFile('micro.wav')
+    with micro as source:
+        r.adjust_for_ambient_noise(source)
+        audio = r.record(source)
+
+    wrec = r.recognize_google(audio)
+
+    if wrec == "open":
+        apot = "yes"
+        re = "t"
+    elif wrec == "close":
+        apot = "noyes"
+        re = "t"
+    else:
+        re == "f"
+
+    if apot == "yes":
+        if wrec == "port 1":
+            p1 = "yes"
+            re = "t"
+        elif wrec == "port 2":
+            p2 = "yes"
+            re = "t"
+        elif wrec == "port 3":
+            p3 = "yes"
+            re = "t"
+        elif wrec == "port 4":
+            p4 = "yes"
+            re = "t"
+        elif wrec == "port 5":
+            p5 = "yes"
+            re = "t"
+        elif wrec == "port 6":
+            p6 = "yes"
+            re = "t"
+        elif wrec == "port 7":
+            p7 = "yes"
+            re = "t"
+        elif wrec == "port 8":
+            p8 = "yes"
+            re = "t"
+        elif wrec == "port 9":
+            p9 = "yes"
+            re = "t"
+        elif wrec == "port 10":
+            p10 = "yes"
+            re = "t"
+        else:
+            re = "f"
+    elif apot == "noyes":
+        if wrec == "port 1":
+            p1 = "noyes"
+            re = "t"
+        elif wrec == "port 2":
+            p2 = "noyes"
+            re = "t"
+        elif wrec == "port 3":
+            p3 = "noyes"
+            re = "t"
+        elif wrec == "port 4":
+            p4 = "noyes"
+            re = "t"
+        elif wrec == "port 5":
+            p5 = "noyes"
+            re = "t"
+        elif wrec == "port 6":
+            p6 = "noyes"
+            re = "t"
+        elif wrec == "port 7":
+            p7 = "noyes"
+            re = "t"
+        elif wrec == "port 8":
+            p8 = "noyes"
+            re = "t"
+        elif wrec == "port 9":
+            p9 = "noyes"
+            re = "t"
+        elif wrec == "port 10":
+            p10 = "noyes"
+            re = "t"
+        else:
+            re = "f"
+    else:
+        re = "f"
+
+    if re == "t":
+        file = open(“van.txt”,”w”) 
+        file.write(p1)
+        file.write(p2)
+        file.write(p3)
+        file.write(p4)
+        file.write(p5)
+        file.write(p6)
+        file.write(p7)
+        file.write(p8)
+        file.write(p9)
+        file.write(p10)
+        file.close()
+    else:
+        re = "f"
+
+
+
+register_openers()
+
+uid = "[your user name]"
+pwd = "[your user password]"
+base_url = '[base URL from previous getServerAddress]'
+url = base_url + '/evs/downloadFile '
+targetfile = 'van.txt'
+
+values = {'uid':uid,
+'pwd':pwd,
+'p':targetfile,
+'version':'1',
+'thumbnail_type':'I'
+}
+
+data, headers = multipart_encode(values)
+    
+request = urllib2.Request(url, data, headers)
+request.unverifiable = True
+response = urllib2.urlopen(request)
+the_page = response.read()
