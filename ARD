@@ -1,0 +1,199 @@
+import pyaudio
+import wave
+import serial
+import pyfirmata
+import urllib3
+import xml.dom.minidom as xdm
+from poster.encode import multipart_encode
+from poster.streaminghttp import register_openers
+from xml.dom.minidom import parseString
+
+#
+
+FORMAT = pyaudio.paInt16
+CHANNELS = 2
+RATE = 44100
+CHUNK = 1024
+RECORD_SECONDS = 0.35
+WAVE_OUTPUT_FILENAME = vaudion.wav
+ 
+audio = pyaudio.PyAudio()
+
+stream = audio.open(format=FORMAT, channels=CHANNELS,
+                rate=RATE, input=True,
+                frames_per_buffer=CHUNK)
+frames = []
+ 
+for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+    data = stream.read(CHUNK)
+    frames.append(data)
+ 
+
+stream.stop_stream()
+stream.close()
+audio.terminate()
+ 
+waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+waveFile.setnchannels(CHANNELS)
+waveFile.setsampwidth(audio.get_sample_size(FORMAT))
+waveFile.setframerate(RATE)
+waveFile.writeframes(b''.join(frames))
+waveFile.close()
+
+with open("waveFile", 'r') as f:
+    datagen, headers = multipart_encode({"file": f})
+    request = urllib2.Request("http://jigsaw.w3.org/css-validator/validator", \
+                              datagen, headers)
+    response = urllib2.urlopen(request)
+ f.close
+ 
+ #
+ 
+register_openers()
+
+uid = "[your user name]"
+pwd = "[your user password]"
+base_url = '[base URL from previous getServerAddress]'
+url = base_url + '/evs/downloadFile '
+targetfile = 'vaudion.wav'
+
+values = {'uid':uid,
+'pwd':pwd,
+'p':targetfile,
+'version':'1',
+'thumbnail_type':'I'
+}
+
+data, headers = multipart_encode(values)
+    
+request = urllib2.Request(url, data, headers)
+request.unverifiable = True
+response = urllib2.urlopen(request)
+the_page = response.read()
+
+#
+
+
+data = urllib.request.urlopen("http://www.google.com").read(20000) 
+
+data = data.split("\n") 
+
+for line in data:
+    p1 = line
+
+for line in data:
+    p2 = line
+
+for line in data:
+    p3 = line
+
+for line in data:
+    p4 = line
+
+for line in data:
+    p5 = line
+
+for line in data:
+    p6 = line
+
+for line in data:
+    p7 = line
+
+for line in data:
+    p8 = line
+
+for line in data:
+    p9 = line
+
+for line in data:
+    p10 = line
+
+if p1 == "yes" :
+    for x in range():
+        board.digital[1].write(1)
+elif p1 == "noyes":
+    for x in range():
+        board.digital[1].write(0)
+else:
+    ar = er
+    
+if p2 == "yes" :
+    for x in range():
+        board.digital[2].write(1)
+elif p2 == "noyes":
+    for x in range():
+        board.digital[2].write(0)
+else:
+    ar = er
+    
+if p3 == "yes" :
+    for x in range():
+        board.digital[3].write(1)
+elif p3 == "noyes":
+    for x in range():
+        board.digital[3].write(0)
+else:
+    ar = er
+    
+if p4 == "yes" :
+    for x in range():
+        board.digital[4].write(1)
+elif p4 == "noyes":
+    for x in range():
+        board.digital[4].write(0)
+else:
+    ar = er
+    
+if p5 == "yes" :
+    for x in range():
+        board.digital[5].write(1)
+elif p5 == "noyes":
+    for x in range():
+        board.digital[5].write(0)
+else:
+    ar = er
+    
+if p6 == "yes" :
+    for x in range():
+        board.digital[6].write(1)
+elif p6 == "noyes":
+    for x in range():
+        board.digital[6].write(0)
+else:
+    ar = er
+    
+if p7 == "yes" :
+    for x in range():
+        board.digital[7].write(1)
+elif p7 == "noyes":
+    for x in range():
+        board.digital[7].write(0)
+else:
+    ar = er
+    
+if p8 == "yes" :
+    for x in range():
+        board.digital[8].write(1)
+elif p8 == "noyes":
+    for x in range():
+        board.digital[8].write(0)
+else:
+    ar = er
+    
+if p9 == "yes" :
+    for x in range():
+        board.digital[9].write(1)
+elif p9 == "noyes":
+    for x in range():
+        board.digital[9].write(0)
+else:
+    ar = er
+    
+if p10 == "yes" :
+    for x in range():
+        board.digital[10].write(1)
+elif p10 == "noyes":
+    for x in range():
+        board.digital[10].write(0)
+else:
+    ar = er
